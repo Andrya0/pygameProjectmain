@@ -13,7 +13,7 @@ def main():
     bg = pygame.image.load("forest.jpg")
     pygame.display.set_caption("Игра")
     active_sprite_list = pygame.sprite.Group()
-    player = Player()
+    player = Player(SCREEN_HEIGHT)
     active_sprite_list.add(player)
     screen.blit(bg, (0, 0))
     clock = pygame.time.Clock()

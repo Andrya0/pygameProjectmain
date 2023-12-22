@@ -1,25 +1,25 @@
 import pygame.sprite
-from game import *
 
 
 class Player(pygame.sprite.Sprite):
     right = True
 
-    def __init__(self):
+    def __init__(self, SCREEN_HEIGHT):
         super().__init__()
         self.image = pygame.image.load('beaver.png')
         self.rect = self.image.get_rect()
         self.change_x = 0
         self.change_y = 0
+        self.SCREEN_HEIGHT = SCREEN_HEIGHT
 
     def calc_grav(self):
         if self.change_y == 0:
             self.change_y = 1
         else:
             self.change_y += .95
-        if self.rect.y >= SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
+        if self.rect.y >= self.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
-            self.rect.y = SCREEN_HEIGHT - self.rect.height
+            self.rect.y = self.SCREEN_HEIGHT - self.rect.height
 
     def jump(self):
         self.rect.y += 10
