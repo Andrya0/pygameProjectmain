@@ -1,4 +1,5 @@
-from Player import *
+from player import Player
+import pygame
 
 SCREEN_WIDTH = 1060
 SCREEN_HEIGHT = 547

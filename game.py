@@ -2,7 +2,7 @@ import pygame
 
 from player import Player
 
-from main import Menu
+from menu import Menu
 
 SCREEN_WIDTH = 1060
 SCREEN_HEIGHT = 547
@@ -22,6 +22,7 @@ def game():
     clock = pygame.time.Clock()
     run = True
     menu = Menu()
+    menu.append_option("Quit", quit)
     #кароч, тут ваще много чё можно добавить интересного, а ещё я не понимаю, чё оно не рисуется, трэш
 
     while run:
@@ -33,7 +34,7 @@ def game():
                     menu.switch(-1)
                 if event.key == pygame.K_s:
                     menu.switch(1)
-                if event.key == pygame.K_e:
+                if event.key == pygame.K_KP_ENTER:
                     menu.select()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
