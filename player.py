@@ -2,15 +2,16 @@ import pygame.sprite
 
 
 class Player(pygame.sprite.Sprite):
-    right = True
 
     def __init__(self, SCREEN_HEIGHT):
         super().__init__()
         self.SCREEN_HEIGHT = SCREEN_HEIGHT
-        self.image = pygame.image.load('beaver.png')
+        self.image = pygame.image.load('resources/images/beaver.png')
         self.rect = self.image.get_rect()
         self.change_x = 0
         self.change_y = 0
+        self.speed = 5
+        self.direction = 'right'
 
     def calc_grav(self):
         if self.change_y == 0:
@@ -26,16 +27,18 @@ class Player(pygame.sprite.Sprite):
         self.rect.y -= 10
 
     def go_left(self):
-        self.change_x = -9
-        if (self.right):
+        if self.direction != 'left':
+            self.direction = 'left'
             self.flip()
-            self.right = False
+
+        self.rect.x -= self.speed
 
     def go_right(self):
-        self.change_x = 9
-        if (not self.right):
+        if self.direction != 'right':
+            self.direction = 'right'
             self.flip()
-            self.right = True
+
+        self.rect.x += self.speed
 
     def stop(self):
         self.change_x = 0

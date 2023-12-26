@@ -1,7 +1,4 @@
-import pygame.font
-from pygame import draw
-
-now_font = pygame.font.Font('arial', 50)
+import pygame
 
 
 class Menu:
@@ -9,9 +6,10 @@ class Menu:
         self.options = []
         self.callbacks = []
         self.now_option_index = 0
+        self.now_font = pygame.font.Font('resources/fonts/arial.ttf', 50)
 
     def append_option(self, option, callback):
-        self.options.append(now_font.render(option, True, (255, 255, 255)))
+        self.options.append(self.now_font.render(option, True, (255, 255, 255)))
         self.callbacks.append(callback)
 
     def switch(self, direction):
@@ -25,5 +23,5 @@ class Menu:
             option_rect = option.get_rect()
             option_rect.topleft = (x, y + i * indent)
             if i == self.now_option_index:
-                draw.rect(surface, (0, 100, 0), option_rect)
+                pygame.draw.rect(surface, (0, 100, 0), option_rect)
             surface.blit(option, option_rect)

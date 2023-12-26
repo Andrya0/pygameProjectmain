@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 
 from player import Player
+from game import Game
 
 SCREEN_WIDTH = 1060
 SCREEN_HEIGHT = 547
@@ -23,7 +24,7 @@ def main_menu():
     pygame.init()
     DISPLAY = [SCREEN_WIDTH, SCREEN_HEIGHT]
     screen = pygame.display.set_mode(DISPLAY)
-    bg = pygame.image.load("forest.jpg")
+    bg = pygame.image.load("resources/images/forest.jpg")
     pygame.display.set_caption("Игра")
 
     play_button = Button("Играть", (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
@@ -38,37 +39,18 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 raise SystemExit("QUIT")
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    player.go_left()
-                if event.key == pygame.K_RIGHT:
-                    player.go_right()
-                if event.key == pygame.K_UP:
-                    player.jump()
-
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT and player.change_x < 0:
-                    player.stop()
-                if event.key == pygame.K_RIGHT and player.change_x > 0:
-                    player.stop()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_button.rect.collidepoint(event.pos):
-                    # Здесь может быть логика для старта игры
-                    pass
+                    game = Game(screen, SCREEN_HEIGHT, SCREEN_WIDTH)
+                    game.run()
                 elif exit_button.rect.collidepoint(event.pos):
                     raise SystemExit("QUIT")
-
-        active_sprite_list.update()
-        if player.rect.right > SCREEN_WIDTH:
-            player.rect.right = SCREEN_WIDTH
-        if player.rect.left < 0:
-            player.rect.left = 0
 
         screen.blit(bg, (0, 0))
         play_button.draw(screen)
         exit_button.draw(screen)
-        active_sprite_list.draw(screen)
+        # active_sprite_list.draw(screen)
 
         clock.tick(30)
         pygame.display.update()
