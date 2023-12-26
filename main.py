@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 
+from player import Player
+
 SCREEN_WIDTH = 1060
 SCREEN_HEIGHT = 547
 clock = pygame.time.Clock()
@@ -28,7 +30,7 @@ def main_menu():
     exit_button = Button("Выйти из игры", (SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 50))
 
     active_sprite_list = pygame.sprite.Group()
-    player = Player()
+    player = Player(SCREEN_HEIGHT)
     active_sprite_list.add(player)
 
     run = True
