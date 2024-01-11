@@ -1,5 +1,5 @@
 import pygame.sprite
-
+import pygame
 
 class Player(pygame.sprite.Sprite):
 
@@ -8,6 +8,8 @@ class Player(pygame.sprite.Sprite):
         self.SCREEN_HEIGHT = SCREEN_HEIGHT
         self.image = pygame.image.load('resources/images/beaver.png')
         self.rect = self.image.get_rect()
+        self.player_x = 100
+        self.player_y = 245
         self.change_x = 0
         self.change_y = 0
         self.speed = 5
@@ -23,8 +25,8 @@ class Player(pygame.sprite.Sprite):
             self.rect.y = self.SCREEN_HEIGHT - self.rect.height
 
     def jump(self):
-        self.rect.y += 10
-        self.rect.y -= 10
+        self.rect.y += self.speed
+        self.rect.y -= self.speed
 
     def go_left(self):
         if self.direction != 'left':
@@ -45,3 +47,5 @@ class Player(pygame.sprite.Sprite):
 
     def flip(self):
         self.image = pygame.transform.flip(self.image, True, False)
+
+

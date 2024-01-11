@@ -7,7 +7,19 @@ from game import Game
 SCREEN_WIDTH = 1060
 SCREEN_HEIGHT = 547
 clock = pygame.time.Clock()
-
+money = [
+    pygame.image.load('images/money/1.png'),
+    pygame.image.load('images/money/2.png'),
+    pygame.image.load('images/money/3.png'),
+    pygame.image.load('images/money/4.png'),
+    pygame.image.load('images/money/5.png'),
+    pygame.image.load('images/money/6.png')
+]
+money_list = []
+money_anime_count = 0
+money_speed = 10
+money_count = 30
+points = 0
 
 class Button:
     def __init__(self, text, position):
