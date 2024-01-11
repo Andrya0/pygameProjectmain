@@ -6,7 +6,6 @@ from player import Player
 
 from menu import Menu
 
-
 class Game:
     def __init__(self, screen, SCREEN_HEIGHT, SCREEN_WIDTH):
         self.screen = screen

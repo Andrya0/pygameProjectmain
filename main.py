@@ -1,6 +1,5 @@
 import pygame
 from pygame.locals import *
-
 from player import Player
 from game import Game
 

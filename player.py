@@ -1,6 +1,5 @@
 import pygame.sprite
 import pygame
-
 class Player(pygame.sprite.Sprite):
 
     def __init__(self, SCREEN_HEIGHT):
