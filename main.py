@@ -20,6 +20,7 @@ money_speed = 10
 money_count = 30
 points = 0
 
+
 class Button:
     def __init__(self, text, position):
         self.font = pygame.font.Font(None, 36)
@@ -42,7 +43,7 @@ def main_menu():
     exit_button = Button("Выйти из игры", (SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 50))
 
     active_sprite_list = pygame.sprite.Group()
-    player = Player(SCREEN_HEIGHT)
+    player = Player(SCREEN_HEIGHT, 0, 0)
     active_sprite_list.add(player)
 
     run = True

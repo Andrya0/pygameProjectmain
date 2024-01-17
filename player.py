@@ -1,14 +1,15 @@
 import pygame.sprite
 import pygame
-class Player(pygame.sprite.Sprite):
 
-    def __init__(self, SCREEN_HEIGHT):
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self, SCREEN_HEIGHT, player_x, player_y):
         super().__init__()
         self.SCREEN_HEIGHT = SCREEN_HEIGHT
         self.image = pygame.image.load('resources/images/beaver.png')
         self.rect = self.image.get_rect()
-        self.player_x = 100
-        self.player_y = 245
+        self.rect.x = player_x
+        self.rect.y = player_y
         self.change_x = 0
         self.change_y = 0
         self.speed = 5
@@ -46,5 +47,3 @@ class Player(pygame.sprite.Sprite):
 
     def flip(self):
         self.image = pygame.transform.flip(self.image, True, False)
-
-

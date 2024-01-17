@@ -6,6 +6,7 @@ from player import Player
 
 from menu import Menu
 
+
 class Game:
     def __init__(self, screen, SCREEN_HEIGHT, SCREEN_WIDTH):
         self.screen = screen
@@ -17,9 +18,13 @@ class Game:
         bg = pygame.image.load("resources/images/forest.jpg")
         pygame.display.set_caption("Игра")
 
+        player_x = 500
+        player_y = 245
+
         active_sprite_list = pygame.sprite.Group()
-        player = Player(self.SCREEN_HEIGHT)
+        player = Player(self.SCREEN_HEIGHT, player_x, player_y)
         active_sprite_list.add(player)
+
         def vlo():
             pass
 
@@ -43,8 +48,6 @@ class Game:
         menu = Menu()
         menu.append_option("Quit", quit)
         menu.append_option("Volume", vlo())
-        player_x = 100
-        player_y = 245
 
         while running:
             label_points = fontt.render(str(points) + '(30)', False, (193, 196, 199))
@@ -97,7 +100,7 @@ class Game:
                     money_list.append(money[money_anime_count].get_rect(topleft=(check_money, 0)))
                     money_count -= 1
             if money_list:
-                for(i, money_idx) in enumerate(money_list):
+                for (i, money_idx) in enumerate(money_list):
                     self.screen.blit(money[money_anime_count], money_idx)
                     if money_idx.y >= 230:
                         money_idx.y += money_speed
